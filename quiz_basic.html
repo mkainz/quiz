@@ -1,3 +1,7 @@
+// This code aims to create an app which tracks the user's location, triggers a question at certain locations, 
+// and ideally shows the location (and question?) on a map
+// Includes code form tutorials: week1/3 (tracking location), week2/lecture (calculating distance), week2/1 (adding map), 
+
 <html>
 <head>
 <title>Test HTML Location Functionality</title>
@@ -13,13 +17,35 @@
 		function showPosition(position) {
 			document.getElementById('showLocation').innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 		}
+
+		function calculateDistance(lat1, lon1, lat2, lon2, unit) {
+			var radlat1 = Math.PI * lat1/180
+			var radlat2 = Math.PI * lat2/180
+			var radlon1 = Math.PI * lon1/180
+			var radlon2 = Math.PI * lon2/180
+			var theta = lon1-lon2
+			var radtheta = Math.PI * theta/180
+			var subAngle = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+			subAngle = Math.acos(subAngle ) // this is a value in radians so need to convert to km
+			subAngle = subAngle * 180/Math.PI // distance * 2 * pi /360 OR distance * pi/180
+			dist = (subAngle/360) * 2 * Math.PI * 3956; // angle/360 * 2 * pi * radius – calculate arc length
+			if (unit=="K") { dist = dist * 1.609344 }
+			if (unit=="N") { dist = dist * 0.8684 }
+			return dist
+		}
+
+		function 
 </script>
 </head>
 
 <body>
-		<b>This code will display your current location</b>
-		<div id='showLocation'>Location will be displayed here</div>
+		<b>You are located at:</b>
+		<div id='showLocation'></div>
+		<button id='trackLocation' onclick='trackLocation()'>Click here</button>
 
-		<button id='trackLocation' onclick='trackLocation()'>Click Me to Get Your Location</button>
+		<b>Your distance to UCL main quad:</b>
+		<div id='showLocation'></div>
+		<button id='trackLocation' onclick='trackLocation()'>Click here</button>
+		
 </body>
 </html>
