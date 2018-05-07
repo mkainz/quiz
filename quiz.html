@@ -10,28 +10,28 @@
  integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
  crossorigin=""></script>
  
- <!-- EARTHQUAKE LISTENER; MODIFY FOR PROXIMITY LISTENER OR SMTH-->
+ <!-- QUESTIONS LISTENER -->
  <script >
 var client;
-var earthquakelayer;
-function getEarthquakes() {
+var questionlayer;
+function getQuestions() {
  client = new XMLHttpRequest();
 
 client.open('GET','http://developer.cege.ucl.ac.uk:30299/getPOI');
-	client.onreadystatechange = earthquakeResponse; 
+	client.onreadystatechange = questionResponse; 
 	client.send();
 }
 
-function earthquakeResponse() {
+function questionResponse() {
 	if (client.readyState == 4) {
-	var earthquakedata = client.responseText;
-	loadEarthquakelayer(earthquakedata);
+	var questiondata = client.responseText;
+	loadQuestionlayer(questiondata);
 	}
 }
-function loadEarthquakelayer(earthquakedata) {
-	var earthquakejson = JSON.parse(earthquakedata);
-	earthquakelayer = L.geoJson(earthquakejson).addTo(mymap);
-	mymap.fitBounds(earthquakelayer.getBounds());
+function loadQuestionlayer(questiondata) {
+	var questionjson = JSON.parse(questiondata);
+	questionlayer = L.geoJson(questionjson).addTo(mymap);
+	mymap.fitBounds(questionlayer.getBounds());
 }
 </script>
  
@@ -84,7 +84,7 @@ var geojsonFeature = {
 
 // listener: adds earthquakes, modify later 
 document.addEventListener('DOMContentLoaded', function() {
-	getEarthquakes();
+	getQuestions();
 }, false);
 </script>
 
