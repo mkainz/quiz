@@ -17,7 +17,7 @@ var earthquakelayer;
 function getEarthquakes() {
  client = new XMLHttpRequest();
 
-client.open('GET','https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson');
+client.open('GET','http://developer.cege.ucl.ac.uk:30299/getPOI');
 	client.onreadystatechange = earthquakeResponse; 
 	client.send();
 }
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 </script>
 
-<button id="startTracking" onclick="trackLocation()">Submit</button>
+<button id="startTracking" onclick="trackLocation()">Track my location</button>
 
 <script src="appActivity.js"></script>
 
