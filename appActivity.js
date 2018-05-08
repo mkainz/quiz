@@ -15,14 +15,14 @@ mymap.locate({setView: true, watch: true}) /* This will return map so you can do
         .on('locationfound', function(e){
 			var userLoc = L.marker([e.latitude, e.longitude])
             var marker = L.marker([e.latitude, e.longitude]).bindPopup('Your are here').openPopup();
-            var circle = L.circle([e.latitude, e.longitude], e.accuracy/2, {
+            var circle = L.circle([e.latitude, e.longitude], e.accuracy/80, {
                 weight: 1,
                 color: 'blue',
                 fillColor: '#cacaca',
                 fillOpacity: 0.2
             });
             mymap.addLayer(marker);
-            //mymap.addLayer(circle);
+            mymap.addLayer(circle);
         })
        .on('locationerror', function(e){
             console.log(e);
