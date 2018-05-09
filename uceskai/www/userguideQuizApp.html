@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="description" content="A user guide for the Quiz Phonegap Application"
+</head>
+
+<body>
+<h4>User guide for Quiz App</h4>
+The folder quiz/uceskai contains all required files to run the quiz mobile application.
+The main purpose of this app is the tracking of the app user location, and the subsequent popup
+of a question once they are in the near vicinity of that question's position. Furthermore,
+this app should return let the user pick an answer out of 4 options, submit said answer, save this
+in a database and return information on whether the selected answer was correct.
+<br>
+<h5>
+FEATURES
+</h5>
+A question pop-up field: Read the question and select one of the 4 answer options underneath.
+Press "Submit" to send off your reply and receive feedback.
+Please note that by submitting your answer choice you agree to have your reply and user ID stored
+in the quiz database.<br>
+<br>
+An interactive leaflet map: Press "Track my location" to navigate the map interface to your position.
+Other blue markers show the locations of quiz questions available. Zoom in or out of the map 
+by clicking on + and -. To move the map content right click anywhere within the map and drag into 
+the desired direction.<br>
+<br>
+<h5>
+INSTALLATION
+</h5>
+To install and run the application, clone the repository by entering in the terminal window: <br>
+git clone https://github.com/mkainz/quiz.git <br>
+<br>
+Find the required server file httpServer.js in the repository github.com/mkainz/server.git and save it to your machine. <br>
+Navigate to the location of the server and start the server by typing: <br>
+node httpServer.js & <br>
+ctrl + c <br>
+<br>
+Then navigate into the folder "uceskai": <br>
+cd uceskai<br>
+<br>
+Start the phonegap app: <br>
+phonegap serve <br>
+<br>
+Open a browser and type in your host followed by your port number, e.g.: <br>
+http://developer.cege.ucl.ac.uk:31299/ <br>
+<br>
+Once you are finished using the application, close the browser tab, navigate to your command
+lind and press <br>
+ctrl + c
+
+
+
+</body>
+</html>
